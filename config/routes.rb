@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root :to => "public/homes#about"
+
   namespace :public do
     scope "public" do
       get "users/my_page", to: "users#show"
