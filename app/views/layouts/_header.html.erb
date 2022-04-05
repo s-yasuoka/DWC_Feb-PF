@@ -1,0 +1,24 @@
+<% if user_signed_in? %>
+  <header class="bg-dark mx-auto">
+    <div class="header-content">
+      <%= link_to 'ECA', root_path %>
+      <!--<ul class="flex">-->
+        <p>ようこそ、<%= current_user.name %>さん!</p>
+        <li><%= link_to 'HOME', public_users_my_page_path %></li>
+        <li><%= link_to 'ABOUT', root_path %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <!--</ul>-->
+    </div>
+  </header>
+<% else %>
+  <header class="bg-dark mx-auto">
+      <div class="header-content">
+      <%= link_to 'ECA', root_path %>
+      <!--<ul class="flex">-->
+        <li><%= link_to 'お試し', root_path %></li>
+        <li><%= link_to '新規登録', new_user_registration_path %></li>
+        <li><%= link_to 'ログイン', new_user_session_path %></li>
+      <!--</ul>-->
+    </div>
+  </header>
+<% end %>

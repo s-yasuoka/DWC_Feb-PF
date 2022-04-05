@@ -1,22 +1,21 @@
-<h1><strong>ECA</strong></h1>
-<h2> (eat × check × alone)</h2>
-<p>
-  ECAは記録型、食事管理アプリです<br>
-  カレンダー表記で毎日の食事を保存できます。<br>
-  又、有料会員登録後は食事傾向を改善するメニューをAIが自動で提案いたします。
-</p>
+<div class="row">
+  <div class="col-md-8 offset-md-1 mx-auto">
+    <h1><strong>ECA</strong></h1>
+    <h2> (eat × check × alone)</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <p>
+      ECAは記録型、食事管理アプリです<br>
+      カレンダー表記で毎日の食事を保存できます。<br>
+      又、有料会員登録後は食事傾向を改善するメニューをAIが自動で提案いたします。
+    </p>
+  </div>
+</div>
 
 
 
 
-<p>
-  ゲストログインでの模擬体験は"こちら"
-</p>
-
-<p>
-  ユーザー登録は<%= link_to "こちら", new_user_registration_path %>
-</p>
-
-<p>
-  ログインは<%= link_to "こちら", new_user_session_path %>
-</p>
+<%= render "layouts/account_links" %>
