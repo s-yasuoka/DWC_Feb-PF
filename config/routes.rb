@@ -7,12 +7,9 @@ Rails.application.routes.draw do
 
   root :to => "public/homes#about"
 
-  namespace :public do
-    scope "public" do
-      get "users/my_page", to: "users#show"
-      resources :users, only: [:show, :edit, :update]
-
-    end
+  scope module: "public" do
+    get "public/users/my_page" => "users#show"
+    resources :users, only: [:edit, :update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
