@@ -14,11 +14,10 @@
 
     <div class="col-md-10">
       <div class="calendar border my-3 p-2 py-3">
-        <p>カレンダあぁぁ</p>
-        <%= month_calendar intakes: @intakes do |date, intakes| %>
+        <%= month_calendar events: @intakes do |date, intakes| %>
           <%= date.day %><br>
 
-          <% @intakes.each do |intake| %>
+          <% intakes.each do |intake| %>
             <div>
               <%= intake.menu.name %>
             </div>
@@ -27,10 +26,10 @@
         <%#= link_to "食事を記録する", new_intake_path %>
       </div>
 
-      <div class="user-box border my-3">
-        <p>ユーザーアイコン</p> <%= current_user.name %> <p class=""></p>
+      <div class="user-box border my-3 p-2">
+        <p>ユーザーアイコン</p> your.name:<strong><%= current_user.name %></strong> <p class=""></p>
 
-        <p>ステータスアイコン</p> <p>あなたのステータスは""です。</p>
+        <p>ステータスアイコン</p> <p>あなたのステータスは"<%= current_user.rank_status %>"です。</p>
       </div>
     </div>
 

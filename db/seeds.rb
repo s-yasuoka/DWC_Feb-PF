@@ -39,8 +39,8 @@ MenuIngredient.create!(
   )
 
 Intake.create!(
-  user_id: "3",
+  user_id: "1",
   menu_id: "1",
   status: "1",
-  eat_day: "2022-04-05"
+  start_time: "2022-04-05"
   )

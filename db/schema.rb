@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2022_04_06_023718) do
     t.integer "user_id", null: false
     t.integer "menu_id", null: false
     t.integer "status", null: false
-    t.datetime "eat_day", null: false
+    t.date "start_time", null: false
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

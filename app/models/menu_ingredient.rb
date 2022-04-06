@@ -1,5 +1,5 @@
 class MenuIngredient < ApplicationRecord
 
-  belongs_to :menus
-  belongs_to :ingredients
+  belongs_to :menu
+  belongs_to :ingredient
 end

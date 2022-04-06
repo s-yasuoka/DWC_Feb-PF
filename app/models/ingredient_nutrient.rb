@@ -1,4 +1,4 @@
-class IngredientNutrient < ApplicationRecor
+class IngredientNutrient < ApplicationRecord
 
   belongs_to :ingredient
   belongs_to :nutrient
