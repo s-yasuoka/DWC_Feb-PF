@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center border my-3">
+      <p>投稿　週グラフ 月グラフ</p>
+    </div>
+
+    <div class="col-md-2 border my-3">
+      <h4>今週</h4>
+      グラフ
+
+      <h4>先月</h4>
+      グラフ
+    </div>
+
+    <div class="col-md-10">
+      <div class="calendar border my-3 p-2 py-3">
+        <%= month_calendar events: @intakes do |date, intakes| %>
+          <%= date.day %><br>
+
+          <% intakes.each do |intake| %>
+            <div>
+              <%= intake.menu.name %>
+            </div>
+          <% end %>
+        <% end %>
+        <%#= link_to "食事を記録する", new_intake_path %>
+      </div>
+
+      <div class="user-box border my-3 p-2">
+        <p>ユーザーアイコン</p> your.name:<strong><%= current_user.name %></strong> <p class=""></p>
+
+        <p>ステータスアイコン</p> <p>あなたのステータスは"<%= current_user.rank_status %>"です。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
