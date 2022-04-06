@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_04_112815) do
+ActiveRecord::Schema.define(version: 2022_04_06_023718) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -58,17 +58,24 @@ ActiveRecord::Schema.define(version: 2022_04_04_112815) do
   create_table "intakes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "menu_id", null: false
-    t.integer "ingredient_id", null: false
-    t.integer "status", default: 4, null: false
+    t.integer "status", null: false
     t.datetime "eat_day", null: false
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "menu_ingredients", force: :cascade do |t|
+    t.integer "menu_id"
+    t.integer "ingredient_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id"], name: "index_menu_ingredients_on_ingredient_id"
+    t.index ["menu_id"], name: "index_menu_ingredients_on_menu_id"
+  end
+
   create_table "menus", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "ingredient", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

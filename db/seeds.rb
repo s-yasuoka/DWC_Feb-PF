@@ -15,3 +15,32 @@ User.create!(
   password: "000000"
 )
 
+Nutrient.create!(
+  name: "カルシウム",
+  nutritional_value: "5"
+  )
+
+Ingredient.create!(
+  name: "牛乳"
+  )
+
+IngredientNutrient.create!(
+  nutrient_id: "1",
+  ingredient_id: "1"
+  )
+
+Menu.create!(
+  name: "シチュー"
+  )
+
+MenuIngredient.create!(
+  menu_id: "1",
+  ingredient_id: "1"
+  )
+
+Intake.create!(
+  user_id: "3",
+  menu_id: "1",
+  status: "1",
+  eat_day: "2022-04-05"
+  )
