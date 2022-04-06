@@ -1,0 +1,21 @@
+<div class="bg-danger">
+  <%= form_with model: @intake, local:true do |f| %>
+  <div class="form">
+    <%= f.label "メニュー" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="form">
+    <%= f.label "何ご飯?" %>
+    <%= f.select :status, [*(1..4)], {selected: 1} %>
+  </div>
+
+  <div class="form">
+    <%= f.label "日付" %>
+    <%= f.date_field :start_time %>
+  </div>
+
+    <%= f.submit %>
+
+<% end %>
+</div>

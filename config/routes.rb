@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   scope module: "public" do
     get "public/users/my_page" => "users#show"
     resources :users, only: [:edit, :update]
+    resources :intakes, only: [:create, :update, :edit, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

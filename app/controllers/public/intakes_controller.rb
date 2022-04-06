@@ -7,6 +7,6 @@ class Public::IntakesController < ApplicationController
 
   private
   def intake_parameter
-    paraams.require(:intake).permit(:user_id, :menu_id, :ingredient_id, :status, :eat_day, :memo)
+    paraams.require(:intake).permit(:user_id, :menu_id, :ingredient_id, :status, :start_time, :memo)
   end
 end
