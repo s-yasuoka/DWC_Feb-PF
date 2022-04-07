@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root :to => "public/homes#about"
 
   scope module: "public" do
-    get "public/users/my_page" => "users#show"
+    get "my_page" => "users#show"
     resources :users, only: [:edit, :update]
     resources :intakes, only: [:create, :update, :edit, :destroy]
   end

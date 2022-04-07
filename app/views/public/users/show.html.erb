@@ -1,8 +1,9 @@
+<%#= render "layouts/error", table: @intake %>
 <%= render "public/intakes/form", intake: @intake %>
 <div class="container">
   <div class="row">
     <div class="col-md-12 text-center border my-3">
-      <p>投稿　週グラフ 月グラフ</p>
+      <p>投稿  週グラフ  月グラフ</p>
     </div>
 
     <div class="col-md-2 border my-3">
@@ -20,7 +21,7 @@
 
           <% intakes.each do |intake| %>
             <div>
-              <%= intake.menu.name %>
+              <%= link_to intake.menu.name, edit_intake_path(intake) %>
             </div>
           <% end %>
         <% end %>
@@ -28,10 +29,16 @@
       </div>
 
       <div class="user-box border my-3 p-2">
-        <p>ユーザーアイコン</p> your.name:<strong><%= current_user.name %></strong> <p class=""></p>
+        <%= image_tag current_user.get_user_image(40,40) %> your.name:<strong><%= current_user.name %></strong> <p class=""></p>
 
         <p>ステータスアイコン</p> <p>あなたのステータスは"<%= current_user.rank_status %>"です。</p>
+
+        <div class="">
+        <%= link_to "編集する", edit_user_path(current_user.id) %>
+        </div>
       </div>
+
+
     </div>
 
   </div>
