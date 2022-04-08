@@ -1,5 +1,5 @@
 <%#= render "layouts/error", table: @intake %>
-<%= render "public/intakes/form", intake: @intake %>
+<%= render "public/intakes/form", intake: @intake_new %>
 <div class="container">
   <div class="row">
     <div class="col-md-12 text-center border my-3">
@@ -21,7 +21,28 @@
 
           <% intakes.each do |intake| %>
             <div>
-              <%= link_to intake.menu.name, edit_intake_path(intake) %>
+              <% if intake.status == "breakfast" %>
+                <div class="intake-breakfast d-flex flex-row">
+                  <p>朝:</p>
+                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark" %>
+                </div>
+              <% elsif intake.status == "lunch" %>
+                <div class="intake-lunch d-flex flex-row">
+                  <p>昼:</p>
+                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark" %>
+                </div>
+              <% elsif intake.status == "dinner" %>
+                <div class="intake-dinner d-flex flex-row">
+                  <p>夜:</p>
+                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-white" %>
+                </div>
+              <% elsif intake.status == "snack" %>
+                <div class="intake-snack d-flex flex-row">
+                  <p>間食:</p>
+                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark" %>
+                </div>
+              <% end %>
+
             </div>
           <% end %>
         <% end %>
@@ -29,12 +50,30 @@
       </div>
 
       <div class="user-box border my-3 p-2">
-        <%= image_tag current_user.get_user_image(40,40) %> your.name:<strong><%= current_user.name %></strong> <p class=""></p>
+        <%= image_tag current_user.get_user_image(40,40) %> your.name:<strong><%= current_user.name %></strong>
 
-        <p>ステータスアイコン</p> <p>あなたのステータスは"<%= current_user.rank_status %>"です。</p>
+        <div class="status-box d-flex flex-row">
+          <% if @user.rank_status == 1 %>
+            <%= image_tag "1.jpg", size: "50x50" %>
+            <p class="text-bottom">あなたのステータスは<strong>"たね"</strong>です。</p>
+          <% elsif @user.rank_status == 2 %>
+            <%= image_tag "2.jpg", size: "50x50" %>
+            <p>あなたのステータスは<strong>"苗"</strong>です。</p>
+          <% elsif @user.rank_status == 3 %>
+            <%= image_tag "3.jpg", size: "50x50" %>
+            <p>あなたのステータスは<strong>"謎の葉"</strong>です。</p>
+          <% elsif @user.rank_status == 4 %>
+            <%= image_tag "4.jpg", size: "50x50" %>
+            <p>あなたのステータスは<strong>"謎の果実"</strong>です。</p>
+          <% elsif @user.rank_status == 5 %>
+            <%= image_tag "5.jpg", size: "50x50" %>
+            <p>あなたのステータスは<strong>"いちご"</strong>です。</p>
+          <% end %>
+
+        </div>
 
         <div class="">
-        <%= link_to "編集する", edit_user_path(current_user.id) %>
+          <%= link_to "編集する", edit_user_path(current_user.id) %>
         </div>
       </div>
 

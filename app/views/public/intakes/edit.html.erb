@@ -4,9 +4,7 @@
   <%= form_with model: @intake, local:true do |f| %>
   <div class="form">
     <%= f.label "メニュー" %>
-    <%= f.text_field :name, autocomplete: "name" %>
-    <%= f.label "menu_-id" %>
-    <%= f.text_field :menu_id %>
+    <%= f.text_field :menu_name %>
   </div>
 
   <div class="form">
@@ -15,9 +13,19 @@
   </div>
 
   <div class="form">
+    <%= f.label "材料" %>
+    <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name %>
+  </div>
+
+  <div class="form">
     <%= f.label "日付" %>
     <%= f.date_field :start_time %>
   </div>
+
+  <dic class="form">
+    <%= f.label "めも" %>
+    <%= f.text_area :memo, row: 3 %>
+  </dic>
 
     <%= f.submit %>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_06_023718) do
+ActiveRecord::Schema.define(version: 2022_04_07_105750) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,9 +55,18 @@ ActiveRecord::Schema.define(version: 2022_04_06_023718) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "intake_ingredients", force: :cascade do |t|
+    t.integer "intake_id"
+    t.integer "ingredient_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id"], name: "index_intake_ingredients_on_ingredient_id"
+    t.index ["intake_id"], name: "index_intake_ingredients_on_intake_id"
+  end
+
   create_table "intakes", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "menu_id", null: false
+    t.string "menu_name", null: false
     t.integer "status", null: false
     t.date "start_time", null: false
     t.text "memo"

@@ -1,16 +1,13 @@
 <div class="bg-danger">
   <%= form_with model: @intake, local:true do |f| %>
   <div class="form">
-    <%= f.label "メニュー ※nameカラムはない" %>
-    <%= f.text_field :name, autocomplete: "name" %><br>
-    <%= f.label "menu_-id" %>
-    <%= f.text_field :menu_id %>
+    <%= f.label "メニュー" %>
+    <%= f.text_field :menu_name %>
   </div>
 
-  <div class="tag-box"> <!--メニューの材料を表示-->
-    <%# menu_ingredients.each do |tag| %>
-      <div class="tag bg-light"><%#= tag.ingredient.name %></div>
-    <%# end %>
+   <div class="form">
+    <%= f.label "材料" %>
+    <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name %>
   </div>
 
   <div class="form">
@@ -25,7 +22,7 @@
 
   <dic class="form">
     <%= f.label "めも" %>
-    <%= f.text_field :memo, size: "40x40" %>
+    <%= f.text_area :memo, row: 3 %>
   </dic>
 
     <%= f.submit %>

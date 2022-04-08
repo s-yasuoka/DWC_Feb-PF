@@ -29,9 +29,6 @@ IngredientNutrient.create!(
   ingredient_id: "1"
   )
 
-Menu.create!(
-  name: "シチュー"
-  )
 
 MenuIngredient.create!(
   menu_id: "1",
@@ -40,7 +37,7 @@ MenuIngredient.create!(
 
 Intake.create!(
   user_id: "1",
-  menu_id: "1",
-  status: "1",
+  menu_name: "シチュー",
+  status: "breakfast",
   start_time: "2022-04-05"
   )
