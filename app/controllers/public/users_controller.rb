@@ -4,8 +4,9 @@ class Public::UsersController < ApplicationController
 
   def show
     @intakes = Intake.all
-    @intake = Intake.new
+    @intake_new = Intake.new
     @user = current_user
+    @intake_ingredients =Ingredient.all
   end
 
   def edit

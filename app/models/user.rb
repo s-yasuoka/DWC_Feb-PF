@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :meals, dependent: :destroy
 
    has_one_attached :user_image
+   validates :name, uniqueness: true, presence: true
 
   def get_user_image(width, height)
     unless user_image.attached?
