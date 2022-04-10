@@ -2,32 +2,52 @@ class Public::IntakesController < ApplicationController
 
   def edit
     @intake = Intake.find(params[:id])
-    # @intake_ingredient = @intake.ingredients.pluck(:name).join(",")
+    @ingredient_list = @intake.ingredients.pluck(:name).join(',')
+    @intake_ingredients = @intake.ingredients
   end
 
   def create
     @intake_new = Intake.new(intake_parameter)
-    @intake.user_id = current_user.id
-    if @intake.save
-      redirect_to my_page_path
+    @intake_new.user_id = current_user.id
+    ingredient_list = params[:intake][:name].split(',')
+    # @ingredient = Ingredient.find(params[:ingredient_id])
+    if @intake_new.save
+      @intake_new.save_ingredient(ingredient_list)
+      # @ingredient.each do |ingredient|
+      #   @intake_new.ingredients << ingredient
+      # end
+      flash[:notice] = "記録しました。"
+      redirect_to user_path(current_user)
     else
-      redirect_to "/my_page"
+      flash[:alert] = "記録できませんでした。"
+      redirect_to user_path(current_user)
     end
   end
 
   def update
     @intake = Intake.find(params[:id])
-    # @intake_ingredient = params[:intake][:name].split(",")
-    if @intake_new.update(intake_parameter)
+    ingredient_list = params[:intake][:name].split(',')
 
-      redirect_to "/my_page"
+    if @intake.update(intake_parameter)
+      @intake.save_ingredient(ingredient_list)
+      flash[:notice] = "更新しました。"
+      redirect_to user_path(current_user)
     else
+      flash[:alert] = "更新できませんでした。"
       render :edit
     end
   end
 
+  def destroy
+    @intake = Intake.find(params[:id])
+    @intake.destroy
+    flash[:notice] = "投稿を削除しました"
+    redirect_to user_path(current_user)
+  end
+
   private
   def intake_parameter
-    params.require(:intake).permit(:user_id, :menu_name, :ingredient_id, :status, :start_time, :memo)
+    params.require(:intake).permit(:user_id, :menu_name, :status, :start_time, :memo)
   end
+
 end

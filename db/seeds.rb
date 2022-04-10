@@ -21,7 +21,17 @@ Nutrient.create!(
   )
 
 Ingredient.create!(
-  name: "牛乳"
+    [
+      {
+        name: "牛乳"
+      },
+      {
+        name: "にんじん"
+      },
+      {
+        name: "じゃがいも"
+      }
+    ]
   )
 
 IngredientNutrient.create!(

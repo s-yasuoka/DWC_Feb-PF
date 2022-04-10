@@ -1,33 +1,64 @@
 投稿へんしゅーーー
 <%#= render "layouts/error",  table: @intake %>
+<%#= render "public/intakes/form", intake: @intake %>
+
 <div class="bg-danger">
   <%= form_with model: @intake, local:true do |f| %>
-  <div class="form">
-    <%= f.label "メニュー" %>
-    <%= f.text_field :menu_name %>
-  </div>
+    <table>
+      <tr>
+        <th><%= f.label "メニュー" %></th>
+        <th><%= f.text_field :menu_name %></th>
+      <tr>
 
-  <div class="form">
-    <%= f.label "何ご飯?" %>
-    <%= f.select :status, Intake.statuses.keys.map{|k| [I18n.t("enums.intake.status.#{k}"), k]},{class: ""} %>
-  </div>
+       <tr>
+        <th><%= f.label "材料" %></th>
+        <th><%= f.text_field :name, value: @ingredient_list %></th>
+        <th><%#= f.collection_select :ingredient_id, Ingredient.all, :id, :name %></th>
+        <th>
+          <%#= select_tag :ingredient_id,
+            options_from_collection_for_select(Ingredient.all, :id, :name, params[:ingredient_id]),
+              {
+                prompt: '具材選択',
+                multiple: true
+              }%>
+        </th>
+        <tr>
+        <td>
+          <% @intake_ingredients.each do |list| %>
+            <%= list.name %>
+          <% end %>
+        </td>
+        </tr>
 
-  <div class="form">
-    <%= f.label "材料" %>
-    <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name %>
-  </div>
+      <tr>
 
-  <div class="form">
-    <%= f.label "日付" %>
-    <%= f.date_field :start_time %>
-  </div>
+      <tr>
+        <th><%= f.label "何ご飯?" %></th>
+        <th><%= f.select :status, Intake.statuses.keys.map{|k| [I18n.t("enums.intake.status.#{k}"), k]},{class: ""} %></th>
+      <tr>
 
-  <dic class="form">
-    <%= f.label "めも" %>
-    <%= f.text_area :memo, row: 3 %>
-  </dic>
+      <tr>
+        <th><%= f.label "日付" %></th>
+        <th><%= f.date_field :start_time %></th>
+      <tr>
 
-    <%= f.submit %>
+      <tr>
+        <th><%= f.label "めも" %></th>
+        <th><%= f.text_area :memo, row: 3 %></th>
+      <tr>
 
-<% end %>
+      <tr>
+        <td></td>
+        <td class="text-right"><%= f.submit %></td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td class="text-right"><%= link_to "削除", @intake, method: :delete %></td>
+      </tr>
+
+    </table>
+  <% end %>
+
+
 </div>
