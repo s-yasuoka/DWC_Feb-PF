@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2022_04_07_105750) do
     t.integer "status", null: false
     t.date "start_time", null: false
     t.text "memo"
+    t.integer "point", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -98,7 +99,7 @@ ActiveRecord::Schema.define(version: 2022_04_07_105750) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "point", default: 0, null: false
+    t.integer "point", default: 1, null: false
     t.integer "rank_status", default: 0, null: false
     t.boolean "is_paid", default: false, null: false
     t.string "email", default: "", null: false

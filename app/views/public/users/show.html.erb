@@ -50,22 +50,22 @@
       </div>
 
       <div class="user-box border my-3 p-2">
-        <%= image_tag current_user.get_user_image(40,40) %> your.name:<strong><%= current_user.name %></strong>
+        <%= image_tag current_user.get_user_image(40,40) %>・<strong><%= current_user.name %></strong>
 
         <div class="status-box d-flex flex-row">
-          <% if @user.rank_status == 1 %>
+          <% if @user.rank_status >= 1 && @user.rank_status <= 3 %>
             <%= image_tag "1.jpg", size: "50x50" %>
             <p class="text-bottom">あなたのステータスは<strong>"たね"</strong>です。</p>
-          <% elsif @user.rank_status == 2 %>
+          <% elsif @user.rank_status > 20 && @user.rank_status <= 10 %>
             <%= image_tag "2.jpg", size: "50x50" %>
             <p>あなたのステータスは<strong>"苗"</strong>です。</p>
-          <% elsif @user.rank_status == 3 %>
+          <% elsif @user.rank_status > 3 && @user.rank_status <= 20 %>
             <%= image_tag "3.jpg", size: "50x50" %>
             <p>あなたのステータスは<strong>"謎の葉"</strong>です。</p>
-          <% elsif @user.rank_status == 4 %>
+          <% elsif @user.rank_status > 4 && @user.rank_status <= 50 %>
             <%= image_tag "4.jpg", size: "50x50" %>
             <p>あなたのステータスは<strong>"謎の果実"</strong>です。</p>
-          <% elsif @user.rank_status == 5 %>
+          <% elsif @user.rank_status > 50 %>
             <%= image_tag "5.jpg", size: "50x50" %>
             <p>あなたのステータスは<strong>"いちご"</strong>です。</p>
           <% end %>

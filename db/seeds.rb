@@ -7,12 +7,24 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(
-  name: "a",
-  point: "10",
-  rank_status: "3",
-  is_paid: "false",
-  email: "a@a",
-  password: "000000"
+  [
+    {
+      name: "a",
+      point: "10",
+      rank_status: "4",
+      is_paid: "false",
+      email: "a@a",
+      password: "000000"
+    },
+    {
+      name: "b",
+      point: "1",
+      rank_status: "1",
+      is_paid: "false",
+      email: "b@b",
+      password: "000000"
+    }
+  ]
 )
 
 Nutrient.create!(
@@ -30,6 +42,18 @@ Ingredient.create!(
       },
       {
         name: "じゃがいも"
+      },
+      {
+        name: "魚"
+      },
+      {
+        name: "豚肉"
+      },
+      {
+        name: "牛肉"
+      },
+      {
+        name: "鶏肉"
       }
     ]
   )

@@ -3,19 +3,19 @@ class Public::IntakesController < ApplicationController
   def edit
     @intake = Intake.find(params[:id])
     @ingredient_list = @intake.ingredients.pluck(:name).join(',')
-    @intake_ingredients = @intake.ingredients
+    @intake_ingredients = @intake.ingredients.all
   end
 
   def create
     @intake_new = Intake.new(intake_parameter)
     @intake_new.user_id = current_user.id
     ingredient_list = params[:intake][:name].split(',')
-    # @ingredient = Ingredient.find(params[:ingredient_id])
     if @intake_new.save
-      @intake_new.save_ingredient(ingredient_list)
-      # @ingredient.each do |ingredient|
-      #   @intake_new.ingredients << ingredient
-      # end
+      @intake_new.save_ingredient(ingredient_list) #食材
+      current_user.point +=  @intake_new.point.to_i #ポイント
+      current_user.rank_status = current_user.point.to_i
+      current_user.update(point: current_user.point, rank_status: current_user.rank_status)
+
       flash[:notice] = "記録しました。"
       redirect_to user_path(current_user)
     else

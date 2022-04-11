@@ -23,11 +23,15 @@
               }%>
         </th>
         <tr>
-        <td>
-          <% @intake_ingredients.each do |list| %>
-            <%= list.name %>
-          <% end %>
-        </td>
+        <tr>
+            <td></td>
+            <td class="d-flex flex-row">
+            <% @intake_ingredients.each do |list| %>
+                <div class="d-flex flex-row bg-primary m-1"><%= list.name %></div>
+            <% end %>
+            </td>
+        </tr>
+
         </tr>
 
       <tr>

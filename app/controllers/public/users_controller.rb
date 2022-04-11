@@ -8,21 +8,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
 
     @intake_ingredients =Ingredient.all
-    # if params[:ingredient_id]
-      @ingredient_list = Ingredient.all
-    #   @ingredient = Ingredient.find(params[:ingredient_id])
-    #   @intakes = @intake.blogs.public_send.order(time: "DESC").page(params[:page]).per(10)
-    #   @intakes_side = Intake.published.order(time: "DESC")
-    # else
-    #   @ingredient_list = Ingredient.all
-    #   @intakes = Intake.public_send.order(time: "DESC").page(params[:page]).per(10)
-    #   @intakes_side = Intake.published.order(time: "DESC")
-    # end
-    # respond_to do |format|
-    #   format.html
-    #   format.rss { render :layout => false }
-    # end
-
+    @ingredient_list = Ingredient.all
   end
 
   def edit

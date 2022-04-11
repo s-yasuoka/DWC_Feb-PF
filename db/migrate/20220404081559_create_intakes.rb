@@ -6,6 +6,7 @@ class CreateIntakes < ActiveRecord::Migration[6.1]
       t.integer :status, null: false
       t.date :start_time, null: false
       t.text :memo
+      t.integer :point, default: "1"
       t.timestamps
     end
   end
