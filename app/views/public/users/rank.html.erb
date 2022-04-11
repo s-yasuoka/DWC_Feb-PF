@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 border">
+      <strong>ランキング👑</strong>
+      <table class="rank border">
+        <% @user_rank.each.with_index(1) do |user, i| %>
+          <tr class="rank-list d-flex flex-row p-2">
+            <td><%= i %> 位 :　</td>
+            <td><%= image_tag user.get_user_image(30,30) %></td>
+            <td>
+              <% if user.id == current_user.id %>
+                <p class="text-success">〜<strong>あなた</strong>〜</p>
+              <% else %>
+                <%= user.name %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+
+    </div>
+  </div>
+</div>

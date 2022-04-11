@@ -53,7 +53,13 @@
 
       <tr>
         <td></td>
-        <td class="text-right"><%= f.submit %></td>
+        <td class="text-right">
+          <% if f.object.new_record? %>
+            <%= f.submit "記録", class: "btn btn-primary" %>
+          <% else %>
+            <%= f.submit "更新", class: "btn btn-success" %>
+          <% end %>
+        </td>
       </tr>
 
       <tr>

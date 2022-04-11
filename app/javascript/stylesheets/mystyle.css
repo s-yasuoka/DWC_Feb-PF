@@ -14,3 +14,17 @@
 .intake-snack{
   background-color: #FFBBFF
 }
+
+footer{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  /*margin-bottom: -200px;*/
+}
+
+body{
+  min-height: 100vh;
+    position: relative;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+}

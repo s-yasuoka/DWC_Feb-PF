@@ -12,6 +12,7 @@ class Public::IntakesController < ApplicationController
     ingredient_list = params[:intake][:name].split(',')
     if @intake_new.save
       @intake_new.save_ingredient(ingredient_list) #食材
+
       current_user.point +=  @intake_new.point.to_i #ポイント
       current_user.rank_status = current_user.point.to_i
       current_user.update(point: current_user.point, rank_status: current_user.rank_status)
@@ -41,6 +42,11 @@ class Public::IntakesController < ApplicationController
   def destroy
     @intake = Intake.find(params[:id])
     @intake.destroy
+
+    current_user.point -=  @intake.point.to_i #ポイント
+    current_user.rank_status = current_user.point.to_i
+    current_user.update(point: current_user.point, rank_status: current_user.rank_status)
+
     flash[:notice] = "投稿を削除しました"
     redirect_to user_path(current_user)
   end

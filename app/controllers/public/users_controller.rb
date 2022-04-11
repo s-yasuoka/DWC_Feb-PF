@@ -1,14 +1,25 @@
 class Public::UsersController < ApplicationController
-
+  # before_action :check_user, only: [:show]
 
 
   def show
-    @intakes = Intake.all
-    @intake_new = Intake.new
     @user = current_user
-
+    @intakes = @user.intakes
+    @intake_new = Intake.new
     @intake_ingredients =Ingredient.all
     @ingredient_list = Ingredient.all
+  end
+
+  def rank
+    @user_rank = User.all.order(rank_point: :desc)
+
+    @ranking = 1
+    @user_rank.find_each do |user|
+      @ranking += 1
+      if user.id == current_user.id
+        return @ranking
+      end
+    end
   end
 
   def edit
@@ -29,9 +40,15 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :user_image)
+    params.require(:user).permit(:name, :user_image ,:email)
   end
 
+  # def check_user
+  #   if current_user.id != params[:id]
+  #     flash[:alert] = "アクセス権限がないため、閲覧できません。"
+  #     redirect_to user_path(current_user)
+  #   end
+  # end
 
 
 
