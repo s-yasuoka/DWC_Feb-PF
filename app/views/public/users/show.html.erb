@@ -48,15 +48,18 @@
             </div>
           <% end %>
         <% end %>
-        <div class="btn btn-primary">食事を記録する</div>
+        <div class="btn btn-primary">食事を記録する(dummy)</div>
         <%#= link_to "食事を記録する", new_intake_path %>
       </div>
 
       <div class="user-box border my-3 p-2">
-        <%= image_tag current_user.get_user_image(40,40) %>・<strong><%= current_user.name %></strong>
+        <div class="d-flex flex-row">
+          <%= image_tag current_user.get_user_image(30,30), class: "user-icon" %>
+          　・<strong><%= current_user.name %></strong>
+        </div>
 
         <div class="status-box d-flex flex-row">
-          <% if @user.rank_status >= 1 && @user.rank_status <= 9 %>
+          <% if @user.rank_status >= 0 && @user.rank_status <= 9 %>
             <%= image_tag "1.jpg", size: "50x50" %>
             <p class="text-bottom">あなたのステータスは<strong>"たね"</strong>です。</p>
           <% elsif @user.rank_status > 9 && @user.rank_status <= 21 %>
@@ -76,7 +79,10 @@
         </div>
 
         <div class="">
-          <%= link_to "編集する", edit_user_path(current_user.id) %>
+
+          <% if @user.name != "guestuser" %>
+            <%= link_to "編集する", edit_user_path(current_user.id) %>
+          <% end %>
         </div>
       </div>
 
@@ -84,7 +90,7 @@
     </div>
 
     <div class="col-md-12 border my-3">
-      <div>お知らせ</div>
+      <div>〜〜お知らせ〜〜</div>
       <table>
         <tr>
           <th>date</th>

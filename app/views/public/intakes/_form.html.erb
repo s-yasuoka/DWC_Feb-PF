@@ -2,6 +2,11 @@
   <%= form_with model: intake, local:true do |f| %>
     <table>
       <tr>
+        <th><%= f.label "写真"%></th>
+        <th><%= f.file_field :image, accept: 'image/*'  %></th>
+      </tr>
+
+      <tr>
         <th><%= f.label "メニュー" %></th>
         <th><%= f.text_field :menu_name %></th>
       <tr>

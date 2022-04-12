@@ -24,7 +24,14 @@ footer{
 
 body{
   min-height: 100vh;
-    position: relative;
-    padding-bottom: 120px;
-    box-sizing: border-box;
+  position: relative;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+}
+
+.user-icon{
+  border-radius: 50%;
+  width: 30px;  /* 縦横を同じ値にする */
+  height: 30px;  /* 縦横を同じ値にする */
+  object-fit: cover;
 }

@@ -53,7 +53,7 @@ class Public::IntakesController < ApplicationController
 
   private
   def intake_parameter
-    params.require(:intake).permit(:user_id, :menu_name, :status, :start_time, :memo)
+    params.require(:intake).permit(:imgae, :menu_name, :status, :start_time, :memo)
   end
 
 end

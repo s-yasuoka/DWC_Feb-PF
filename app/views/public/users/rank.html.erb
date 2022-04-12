@@ -1,23 +1,50 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 offset-md-1 border">
-      <strong>ランキング👑</strong>
-      <table class="rank border">
-        <% @user_rank.each.with_index(1) do |user, i| %>
-          <tr class="rank-list d-flex flex-row p-2">
-            <td><%= i %> 位 :　</td>
-            <td><%= image_tag user.get_user_image(30,30) %></td>
-            <td>
-              <% if user.id == current_user.id %>
-                <p class="text-success">〜<strong>あなた</strong>〜</p>
-              <% else %>
-                <%= user.name %>
-              <% end %>
-            </td>
+      <div class="col-md-9 border m-2 p-2">
+        <strong>ランキング👑</strong>
+        <table class="rank border">
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
-        <% end %>
-      </table>
+          <% @user_rank.each.with_index(1) do |user, i| %>
+            <tr class="rank-list d-flex flex-row p-2 m-2">
+              <td><%= i %> 位 :　</td>
+              <td><%= image_tag user.get_user_image(30,30), class: "user-icon" %></td>
+              <td>
+                <% if user.id == current_user.id %>
+                  <p class="text-success">　〜<strong>あなた</strong>〜</p>
+                <% else %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+              <td>
+                <% if user.rank_status >= 0 && user.rank_status <= 9 %>
+                  <%= image_tag "1.jpg", size: "30x30" %>
+                <% elsif user.rank_status > 9 && user.rank_status <= 21 %>
+                  <%= image_tag "2.jpg", size: "30x30" %>
+                <% elsif user.rank_status > 21 && user.rank_status <= 42 %>
+                  <%= image_tag "3.jpg", size: "30x30" %>
+                <% elsif user.rank_status > 42 && user.rank_status <= 63 %>
+                  <%= image_tag "4.jpg", size: "30x30" %>
+                <% elsif user.rank_status > 63 %>
+                  <%= image_tag "5.jpg", size: "30x30" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
 
-    </div>
+      <div class="col-md-2 border m-2 p-2">
+        <h4>今週</h4>
+        グラフ
+
+        <h4>先月</h4>
+        グラフ
+      </div>
+
   </div>
 </div>
