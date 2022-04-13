@@ -2,7 +2,7 @@ class Public::IntakesController < ApplicationController
 
   def edit
     @intake = Intake.find(params[:id])
-    @ingredient_list = @intake.ingredients.pluck(:name).join(',')
+    @ingredient_list = @intake.ingredients.pluck(:name)
     @intake_ingredients = @intake.ingredients.all
   end
 
@@ -27,7 +27,7 @@ class Public::IntakesController < ApplicationController
 
   def update
     @intake = Intake.find(params[:id])
-    ingredient_list = params[:intake][:name].split(',')
+    ingredient_list = params[:intake][:name]
 
     if @intake.update(intake_parameter)
       @intake.save_ingredient(ingredient_list)

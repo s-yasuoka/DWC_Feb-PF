@@ -1,6 +1,11 @@
-<div class="bg-danger">
+<div class="bg-success">
   <%= form_with model: intake, local:true do |f| %>
     <table>
+       <tr>
+        <th><%= f.label "日付" %></th>
+        <th><%= f.date_field :start_time %></th>
+      <tr>
+
       <tr>
         <th><%= f.label "写真"%></th>
         <th><%= f.file_field :image, accept: 'image/*'  %></th>
@@ -21,11 +26,6 @@
       <tr>
         <th><%= f.label "何ご飯?" %></th>
         <th><%= f.select :status, Intake.statuses.keys.map{|k| [I18n.t("enums.intake.status.#{k}"), k]},{class: ""} %></th>
-      <tr>
-
-      <tr>
-        <th><%= f.label "日付" %></th>
-        <th><%= f.date_field :start_time %></th>
       <tr>
 
       <tr>

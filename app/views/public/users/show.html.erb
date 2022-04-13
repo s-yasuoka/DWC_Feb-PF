@@ -25,23 +25,23 @@
             <div>
               <% if intake.status == "breakfast" %>
                 <div class="intake-breakfast d-flex flex-row">
-                  <p>朝:</p>
-                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark" %>
+                  <p class="m-1">朝:</p>
+                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
                 </div>
               <% elsif intake.status == "lunch" %>
                 <div class="intake-lunch d-flex flex-row">
-                  <p>昼:</p>
-                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark" %>
+                  <p class="m-1">昼:</p>
+                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
                 </div>
               <% elsif intake.status == "dinner" %>
                 <div class="intake-dinner d-flex flex-row">
-                  <p>夜:</p>
-                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-white" %>
+                  <p class="m-1">夜:</p>
+                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-white m-1" %>
                 </div>
               <% elsif intake.status == "snack" %>
                 <div class="intake-snack d-flex flex-row">
-                  <p>間食:</p>
-                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark" %>
+                  <p class="m-1">間食:</p>
+                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
                 </div>
               <% end %>
 
@@ -53,37 +53,40 @@
       </div>
 
       <div class="user-box border my-3 p-2">
-        <div class="d-flex flex-row">
-          <%= image_tag current_user.get_user_image(30,30), class: "user-icon" %>
-          　・<strong><%= current_user.name %></strong>
-        </div>
+        <table>
+          <tr class="d-flex flex-row">
+            <td><%= image_tag current_user.user_image, class: "user-icon" %></td>
+            <td><strong><%= current_user.name %></strong></td>
+          </tr>
 
-        <div class="status-box d-flex flex-row">
-          <% if @user.rank_status >= 0 && @user.rank_status <= 9 %>
-            <%= image_tag "1.jpg", size: "50x50" %>
-            <p class="text-bottom">あなたのステータスは<strong>"たね"</strong>です。</p>
-          <% elsif @user.rank_status > 9 && @user.rank_status <= 21 %>
-            <%= image_tag "2.jpg", size: "50x50" %>
-            <p>あなたのステータスは<strong>"苗"</strong>です。</p>
-          <% elsif @user.rank_status > 21 && @user.rank_status <= 42 %>
-            <%= image_tag "3.jpg", size: "50x50" %>
-            <p>あなたのステータスは<strong>"謎の葉"</strong>です。</p>
-          <% elsif @user.rank_status > 42 && @user.rank_status <= 63 %>
-            <%= image_tag "4.jpg", size: "50x50" %>
-            <p>あなたのステータスは<strong>"謎の果実"</strong>です。</p>
-          <% elsif @user.rank_status > 63 %>
-            <%= image_tag "5.jpg", size: "50x50" %>
-            <p>あなたのステータスは<strong>"いちご"</strong>です。</p>
-          <% end %>
+           <tr class="d-flex flex-row">
+              <% if @user.rank_status >= 0 && @user.rank_status <= 9 %>
+                <td><%= image_tag "1.jpg", size: "50x50" %></td>
+                <td>あなたのステータスは<strong>"たね"</strong>です。</td>
+              <% elsif @user.rank_status > 9 && @user.rank_status <= 21 %>
+                <td><%= image_tag "2.jpg", size: "50x50" %></td>
+                <td>あなたのステータスは<strong>"苗"</strong>です。</td>
+              <% elsif @user.rank_status > 21 && @user.rank_status <= 42 %>
+                <td><%= image_tag "3.jpg", size: "50x50" %></td>
+                <td>あなたのステータスは<strong>"謎の葉"</strong>です。</td>
+              <% elsif @user.rank_status > 42 && @user.rank_status <= 63 %>
+                <td><%= image_tag "4.jpg", size: "50x50" %></td>
+                <td>あなたのステータスは<strong>"謎の果実"</strong>です。</td>
+              <% elsif @user.rank_status > 63 %>
+                <td><%= image_tag "5.jpg", size: "50x50" %></td>
+                <td>あなたのステータスは<strong>"いちご"</strong>です。</td>
+              <% end %>
+          </tr>
 
-        </div>
-
-        <div class="">
-
-          <% if @user.name != "guestuser" %>
-            <%= link_to "編集する", edit_user_path(current_user.id) %>
-          <% end %>
-        </div>
+          <tr>
+            <td></td>
+            <td>
+              <% if @user.name != "guestuser" %>
+                <%= link_to "編集する", edit_user_path(current_user.id) %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
       </div>
 
 

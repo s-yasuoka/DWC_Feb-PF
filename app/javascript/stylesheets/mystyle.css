@@ -34,4 +34,13 @@ body{
   width: 30px;  /* 縦横を同じ値にする */
   height: 30px;  /* 縦横を同じ値にする */
   object-fit: cover;
+  border: 1px solid #EEEEEE;
 }
+
+.nav-user-icon{
+  border-radius: 50%;
+  width: 30px;  /* 縦横を同じ値にする */
+  height: 30px;  /* 縦横を同じ値にする */
+  object-fit: cover;
+}
+
