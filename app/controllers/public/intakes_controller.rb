@@ -9,7 +9,7 @@ class Public::IntakesController < ApplicationController
   def create
     @intake_new = Intake.new(intake_parameter)
     @intake_new.user_id = current_user.id
-    ingredient_list = params[:intake][:name].split(',')
+    ingredient_list = params[:intake][:name]
     if @intake_new.save
       @intake_new.save_ingredient(ingredient_list) #食材
 

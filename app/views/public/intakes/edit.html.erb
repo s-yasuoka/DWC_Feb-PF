@@ -11,20 +11,13 @@
       <tr>
 
        <tr>
-        <th><%= f.label "材料" %></th>
-        <th><%= f.text_field :name, value: @ingredient_list %></th>
-        <th><%#= f.collection_select :ingredient_id, Ingredient.all, :id, :name %></th>
-        <th>
-          <%#= select_tag :ingredient_id,
-            options_from_collection_for_select(Ingredient.all, :id, :name, params[:ingredient_id]),
-              {
-                prompt: '具材選択',
-                multiple: true
-              }%>
-        </th>
+          <th><%= f.label "材料" %></th>
+          <th>
+            <%= select_tag 'intake[name]', options_from_collection_for_select(Ingredient.all, :name, :name), class: "form-control", multiple: true %>
+          </th>
         <tr>
         <tr>
-            <td></td>
+            <td>記録中の材料</td>
             <td class="d-flex flex-row">
             <% @intake_ingredients.each do |list| %>
                 <div class="d-flex flex-row bg-primary m-1"><%= list.name %></div>
@@ -72,3 +65,10 @@
 
 
 </div>
+
+<!--後で修正-->
+<script>
+$(function () {
+    $('#intake_name').select2();
+});
+</script>
