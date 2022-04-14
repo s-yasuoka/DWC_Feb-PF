@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, except: [:about]
+  # before_action :authenticate_user!, except: [:about]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  
+
 
   protected
 

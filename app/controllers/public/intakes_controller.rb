@@ -1,4 +1,5 @@
 class Public::IntakesController < ApplicationController
+  before_action :authenticate_user!
 
   def edit
     @intake = Intake.find(params[:id])

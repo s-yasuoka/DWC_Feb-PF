@@ -1,8 +1,8 @@
 class Public::HomesController < ApplicationController
 
   def about
-    @notifications = Notification.all
     @notification_new = Notification.new
+    @notifications = Notification.all
   end
 
 end
