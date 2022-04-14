@@ -21,31 +21,43 @@
         <%= month_calendar events: @intakes do |date, intakes| %>
           <%= date.day %><br>
 
-          <% intakes.each do |intake| %>
-            <div>
-              <% if intake.status == "breakfast" %>
-                <div class="intake-breakfast d-flex flex-row">
-                  <p class="m-1">朝:</p>
-                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
-                </div>
-              <% elsif intake.status == "lunch" %>
-                <div class="intake-lunch d-flex flex-row">
-                  <p class="m-1">昼:</p>
-                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
-                </div>
-              <% elsif intake.status == "dinner" %>
-                <div class="intake-dinner d-flex flex-row">
-                  <p class="m-1">夜:</p>
-                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-white m-1" %>
-                </div>
-              <% elsif intake.status == "snack" %>
-                <div class="intake-snack d-flex flex-row">
-                  <p class="m-1">間食:</p>
-                  <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
-                </div>
-              <% end %>
+          <% unless intakes == nil %>
+              <div class="intake-breakfast d-flex flex-row">
+                <p class="m-1">朝:</p>
+                <% intakes.each do |intake| %>
+                  <% if intake.status == "breakfast" %>
+                    <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
+                  <% end %>
+                <% end %>
+              </div>
 
-            </div>
+              <div class="intake-lunch d-flex flex-row">
+                <p class="m-1">昼:</p>
+                <% intakes.each do |intake| %>
+                  <% if intake.status == "lunch" %>
+                    <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
+                  <% end %>
+                <% end %>
+              </div>
+
+              <div class="intake-dinner d-flex flex-row">
+                <p class="m-1">夜:</p>
+                <% intakes.each do |intake| %>
+                  <% if intake.status == "diner" %>
+                    <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
+                  <% end %>
+                <% end %>
+              </div>
+
+              <div class="intake-snack d-flex flex-row">
+                <p class="m-1">間食:</p>
+                <% intakes.each do |intake| %>
+                  <% if intake.status == "snack" %>
+                    <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
+                  <% end %>
+                <% end %>
+              </div>
+
           <% end %>
         <% end %>
         <div class="btn btn-primary">食事を記録する(dummy)</div>
@@ -55,7 +67,7 @@
       <div class="user-box border my-3 p-2">
         <table>
           <tr class="d-flex flex-row">
-            <td><%= image_tag current_user.user_image, class: "user-icon" %></td>
+            <td><%= image_tag current_user.get_user_image(20,20), class: "user-icon" %></td>
             <td><strong><%= current_user.name %></strong></td>
           </tr>
 
@@ -94,16 +106,8 @@
 
     <div class="col-md-12 border my-3">
       <div>〜〜お知らせ〜〜</div>
-      <table>
-        <tr>
-          <th>date</th>
-          <th>contents</th>
-        </tr>
-        <tr>
-          <td> </td>
-          <td> </td>
-        </tr>
-      </table>
+      <%= render "admin/notifications/index", notifications: @notifications %>
+
 
     </div>
   </div>

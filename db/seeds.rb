@@ -5,7 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+Admin.create!(
+  name: "k",
+  email: "a@aa",
+  password: "000000"
+  )
 User.create!(
   [
     {
@@ -28,8 +32,33 @@ User.create!(
 )
 
 Nutrient.create!(
-  name: "カルシウム",
-  nutritional_value: "5"
+    [
+      {
+        id: 1,
+        name: "タンパク質",
+        nutritional_value: "13"
+      },
+      {
+        id: 2,
+        name: "ビタミン",
+        nutritional_value: "1"
+      },
+      {
+        id: 3,
+        name: "ミネラル",
+        nutritional_value: "1"
+      },
+      {
+        id: 4,
+        name: "炭水化物",
+        nutritional_value: "50"
+      },
+      {
+        id: 5,
+        name: "脂質",
+        nutritional_value: "20"
+      }
+    ]
   )
 
 Ingredient.create!(
@@ -47,13 +76,37 @@ Ingredient.create!(
         name: "魚"
       },
       {
-        name: "豚肉"
+        name: "豆製品"
       },
       {
-        name: "牛肉"
+        name: "卵"
       },
       {
-        name: "鶏肉"
+        name: "肉"
+      },
+      {
+        name: "米"
+      },
+      {
+        name: "パン"
+      },
+      {
+        name: "麺類"
+      },
+      {
+        name: "野菜"
+      },
+      {
+        name: "きのこ"
+      },
+      {
+        name: "ヨーグルト"
+      },
+      {
+        name: "チーズ"
+      },
+      {
+        name: "果物"
       }
     ]
   )

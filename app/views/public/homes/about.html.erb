@@ -23,13 +23,21 @@
   </div>
 </div>
 
-
-
-
-
 <div class="row">
   <div class="col-md-8 offset-md-1 mx-auto border m-2 p-2">
     <%= render "layouts/account_links" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 offset-md-1 mx-auto border m-2 p-2">
+    <div>〜〜お知らせ〜〜</div>
+    <%= render "admin/notifications/index", notifications: @notifications %>
+
+    <% if admin_signed_in? %>
+      <p>新規お知らせ</p>
+      <%#= render "admin/notifications/form", notifications: @notification_new %>
+    <% end %>
   </div>
 </div>
 

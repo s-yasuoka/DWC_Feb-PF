@@ -1,0 +1,14 @@
+
+      <table>
+        <tr>
+          <th>date</th>
+          <th>title</th>
+        </tr>
+
+        <% notifications.each do |notification| %>
+          <tr>
+            <td><%= notification.title %></td>
+            <td><%= notification.content %></td>
+          </tr>
+        <% end %>
+      </table>

@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
       <div class="col-md-9 border m-2 p-2">
-        <strong>ランキング👑</strong>
-        <table class="rank border">
+        <strong class="m-3">👑ランキング👑</strong>
+        <table class="rank border col-md-7 mt-4">
           <tr>
             <th></th>
             <th></th>
@@ -13,7 +13,7 @@
             <tr class="rank-list d-flex flex-row p-2 m-2">
               <td><%= i %> 位 :　</td>
               <td><%= image_tag user.get_user_image(30,30), class: "user-icon" %></td>
-              <td>
+              <td class="text-center mx-auto">
                 <% if user.id == current_user.id %>
                   <p class="text-success">　〜<strong>あなた</strong>〜</p>
                 <% else %>
@@ -36,6 +36,18 @@
             </tr>
           <% end %>
         </table>
+        <div class="col-md-7 mt-4">
+          <p>あなたのユーザランキングは、現在<strong class="text-danger"><%= @ranking-1 %></strong>位です。</p>
+          <% if @ranking-1 == 1 %>
+            <p>引き続きこの座を維持し、健康的な生活を続けましょう!!</p>
+          <% else %>
+            <p>
+              トップユーザーを目指す場合は、規則正しい食生活と記録が重要になります。<br>
+              適度なバランスで、適度な食事を心がけましょう。
+              <div class="">ヒント:記録はその日に記録していますか？忘れないようにできるだけ当日の記録を心がけましょう</div>
+            </p>
+          <% end %>
+        </div>
       </div>
 
       <div class="col-md-2 border m-2 p-2">

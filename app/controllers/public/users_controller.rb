@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  # before_action :check_user, only: 
+  # before_action :check_user, only:
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
 
@@ -10,6 +10,7 @@ class Public::UsersController < ApplicationController
     @intake_new = Intake.new
     @intake_ingredients =Ingredient.all
     @ingredient_list = Ingredient.all
+    @notifications = Notification.all
   end
 
   def rank

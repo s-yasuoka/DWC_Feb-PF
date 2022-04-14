@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  devise_for :admins, controllers: {
+    sessions: 'admin/sessions'
+  }
+
   devise_for :users, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -15,6 +19,10 @@ Rails.application.routes.draw do
     get "users/rank" => "users#rank"
     resources :users, only: [:show, :edit, :update]
     resources :intakes, only: [:create, :update, :edit, :destroy]
+  end
+
+  namespace :admin do
+    resources :notifications, only: [:create, :edit, :update, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
