@@ -36,7 +36,7 @@ class Public::UsersController < ApplicationController
       redirect_to user_path(current_user)
     else
       flash[:alert] = "更新できません。"
-      render :show
+      render :edit
     end
   end
 

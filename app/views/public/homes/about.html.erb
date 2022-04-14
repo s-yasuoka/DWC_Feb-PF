@@ -23,11 +23,13 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-8 offset-md-1 mx-auto border m-2 p-2">
-    <%= render "layouts/account_links" %>
+<% unless user_signed_in? %>
+  <div class="row">
+    <div class="col-md-8 offset-md-1 mx-auto border m-2 p-2">
+      <%= render "layouts/account_links" %>
+    </div>
   </div>
-</div>
+<% end %>
 
 <div class="row">
   <div class="col-md-8 offset-md-1 mx-auto border m-2 p-2">

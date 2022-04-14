@@ -67,7 +67,13 @@
       <div class="user-box border my-3 p-2">
         <table>
           <tr class="d-flex flex-row">
-            <td><%= image_tag current_user.get_user_image(20,20), class: "user-icon" %></td>
+            <td>
+              <% if current_user.user_image.presence? %>
+                <%= image_tag current_user.user_image, class: "user-icon" %>
+              <% else %>
+                <%= image_tag "no_image",class: "nav-user-icon" %>
+              <% end %>
+            </td>
             <td><strong><%= current_user.name %></strong></td>
           </tr>
 
