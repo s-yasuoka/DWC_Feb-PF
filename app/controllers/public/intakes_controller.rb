@@ -1,6 +1,13 @@
 class Public::IntakesController < ApplicationController
   before_action :authenticate_user!
 
+  def new
+    @intake_new = Intake.new
+    @intake_ingredients =Ingredient.all
+    @ingredient_list = Ingredient.all
+    @notifications = Notification.all
+  end
+
   def edit
     @intake = Intake.find(params[:id])
     @ingredient_list = @intake.ingredients.pluck(:name)

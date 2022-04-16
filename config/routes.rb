@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   scope module: "public" do
     get "users/rank" => "users#rank"
     resources :users, only: [:show, :edit, :update]
-    resources :intakes, only: [:create, :update, :edit, :destroy]
+    resources :intakes, only: [:new, :create, :update, :edit, :destroy]
   end
 
   namespace :admin do

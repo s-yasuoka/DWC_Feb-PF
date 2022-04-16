@@ -1,9 +1,10 @@
 <%#= render "layouts/error", table: @intake %>
-<%= render "public/intakes/form", intake: @intake_new %>
+<%#= render "public/intakes/form", intake: @intake_new %>
+<%#= link_to "new", new_intake_path, remote: true, class: "btn btn-lg, btn-primary" %>
 <div class="container">
   <div class="row">
     <div class="col-md-12 text-center border my-3">
-      <div class="bar-item">
+      <div class="bar-item m-2">
         <%= link_to "ランキング", users_rank_path %>
       </div>
     </div>
@@ -57,18 +58,34 @@
                   <% end %>
                 <% end %>
               </div>
-
           <% end %>
         <% end %>
-        <div class="btn btn-primary">食事を記録する(dummy)</div>
-        <%#= link_to "食事を記録する", new_intake_path %>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          新しく記録する
+        </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">新規</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= render "public/intakes/form", intake: @intake_new %>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="user-box border my-3 p-2">
         <table>
           <tr class="d-flex flex-row">
             <td>
-              <% if current_user.user_image.presence? %>
+              <% if current_user.user_image.present? %>
                 <%= image_tag current_user.user_image, class: "user-icon" %>
               <% else %>
                 <%= image_tag "no_image",class: "nav-user-icon" %>
