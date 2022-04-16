@@ -1,7 +1,12 @@
+<%#= render "layouts/error", table: @intake %>
+<%#= render "public/intakes/form", intake: @intake_new %>
+<%#= link_to "new", new_intake_path, remote: true, class: "btn btn-lg, btn-primary" %>
 <div class="container">
   <div class="row">
     <div class="col-md-12 text-center border my-3">
-      <p>投稿　週グラフ 月グラフ</p>
+      <div class="bar-item m-2">
+        <%= link_to "ランキング", users_rank_path %>
+      </div>
     </div>
 
     <div class="col-md-2 border my-3">
@@ -17,21 +22,116 @@
         <%= month_calendar events: @intakes do |date, intakes| %>
           <%= date.day %><br>
 
-          <% intakes.each do |intake| %>
-            <div>
-              <%= intake.menu.name %>
-            </div>
+          <% unless intakes == nil %>
+              <div class="intake-breakfast d-flex flex-row">
+                <p class="m-1">朝:</p>
+                <% intakes.each do |intake| %>
+                  <% if intake.status == "breakfast" %>
+                    <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
+                  <% end %>
+                <% end %>
+              </div>
+
+              <div class="intake-lunch d-flex flex-row">
+                <p class="m-1">昼:</p>
+                <% intakes.each do |intake| %>
+                  <% if intake.status == "lunch" %>
+                    <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
+                  <% end %>
+                <% end %>
+              </div>
+
+              <div class="intake-dinner d-flex flex-row">
+                <p class="m-1">夜:</p>
+                <% intakes.each do |intake| %>
+                  <% if intake.status == "diner" %>
+                    <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
+                  <% end %>
+                <% end %>
+              </div>
+
+              <div class="intake-snack d-flex flex-row">
+                <p class="m-1">間食:</p>
+                <% intakes.each do |intake| %>
+                  <% if intake.status == "snack" %>
+                    <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
+                  <% end %>
+                <% end %>
+              </div>
           <% end %>
         <% end %>
-        <%#= link_to "食事を記録する", new_intake_path %>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          新しく記録する
+        </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">新規</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= render "public/intakes/form", intake: @intake_new %>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="user-box border my-3 p-2">
-        <p>ユーザーアイコン</p> your.name:<strong><%= current_user.name %></strong> <p class=""></p>
+        <table>
+          <tr class="d-flex flex-row">
+            <td>
+              <% if current_user.user_image.present? %>
+                <%= image_tag current_user.user_image, class: "user-icon" %>
+              <% else %>
+                <%= image_tag "no_image",class: "nav-user-icon" %>
+              <% end %>
+            </td>
+            <td><strong><%= current_user.name %></strong></td>
+          </tr>
 
-        <p>ステータスアイコン</p> <p>あなたのステータスは"<%= current_user.rank_status %>"です。</p>
+           <tr class="d-flex flex-row">
+              <% if @user.rank_status >= 0 && @user.rank_status <= 9 %>
+                <td><%= image_tag "1.jpg", size: "50x50" %></td>
+                <td>あなたのステータスは<strong>"たね"</strong>です。</td>
+              <% elsif @user.rank_status > 9 && @user.rank_status <= 21 %>
+                <td><%= image_tag "2.jpg", size: "50x50" %></td>
+                <td>あなたのステータスは<strong>"苗"</strong>です。</td>
+              <% elsif @user.rank_status > 21 && @user.rank_status <= 42 %>
+                <td><%= image_tag "3.jpg", size: "50x50" %></td>
+                <td>あなたのステータスは<strong>"謎の葉"</strong>です。</td>
+              <% elsif @user.rank_status > 42 && @user.rank_status <= 63 %>
+                <td><%= image_tag "4.jpg", size: "50x50" %></td>
+                <td>あなたのステータスは<strong>"謎の果実"</strong>です。</td>
+              <% elsif @user.rank_status > 63 %>
+                <td><%= image_tag "5.jpg", size: "50x50" %></td>
+                <td>あなたのステータスは<strong>"いちご"</strong>です。</td>
+              <% end %>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td>
+              <% if @user.name != "guestuser" %>
+                <%= link_to "編集する", edit_user_path(current_user.id) %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
       </div>
+
+
     </div>
 
+    <div class="col-md-12 border my-3">
+      <div>〜〜お知らせ〜〜</div>
+      <%= render "admin/notifications/index", notifications: @notifications %>
+
+
+    </div>
   </div>
 </div>

@@ -1,21 +1,49 @@
 <div class="row">
-  <div class="col-md-8 offset-md-1 mx-auto">
-    <h1><strong>ECA</strong></h1>
-    <h2> (eat × check × alone)</h2>
+  <div class="col-md-8 offset-md-1 mx-auto border m-2 p-2">
+    <h1 class="col-md-2 bg-light"><strong>ECA</strong></h1>
+    <h2 class="col-md-5 bg-light"> (eat × check × alone)</h2>
   </div>
 </div>
 
 <div class="row">
-  <div class="col">
+  <div class="col-md-8 offset-md-1 mx-auto border">
     <p>
       ECAは記録型、食事管理アプリです<br>
       カレンダー表記で毎日の食事を保存できます。<br>
       又、有料会員登録後は食事傾向を改善するメニューをAIが自動で提案いたします。
     </p>
   </div>
+
+  <div class="col-md-8 offset-md-1 mx-auto border m-2 p-2">
+    <p>
+      継続数、取得栄養バランスによって ユーザーランクが上がります。<br>
+      バランスの良い食事を摂り、アイコンを育てましょう!!
+    </p>
+    <%= image_tag "status_rank.jpg", class: "image-fluid" %>
+  </div>
 </div>
 
+<% unless user_signed_in? %>
+  <div class="row">
+    <div class="col-md-8 offset-md-1 mx-auto border m-2 p-2">
+      <%= render "layouts/account_links" %>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-8 offset-md-1 mx-auto border m-2 p-2">
+    <div class="border col-md-8 m-3">
+      <div>〜〜お知らせ〜〜</div>
+      <%= render "admin/notifications/index", notifications: @notifications %>
+    </div>
 
 
+    <% if admin_signed_in? %>
+    <div class="border col-md-4 m-3"
+      <p>新規news</p>
+      <%= render "admin/notifications/form", notifications: @notification_new %>
+    <% end %>
+  </div>
+</div>
 
-<%= render "layouts/account_links" %>

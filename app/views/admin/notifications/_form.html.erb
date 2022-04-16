@@ -1,0 +1,24 @@
+<%= form_with model: notifications, url: admin_notifications_path, html:{ method: :post}, local:true do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label "タイトル" %></th>
+      <th><%= f.text_field :title %></th>
+    </tr>
+
+    <tr>
+      <th><%= f.label "内容" %></th>
+      <th><%= f.text_area :content %></th>
+    </tr>
+
+    <tr>
+      <th></th>
+      <th>
+        <% if f.object.new_record? %>
+          <%= f.submit "保存", class: "btn btn-primary" %>
+        <% else %>
+          <%= f.submit "更新", class: "btn btn-success" %>
+        <% end %>
+      </th>
+    </tr>
+  </table>
+<% end %>

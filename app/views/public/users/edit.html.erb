@@ -1,2 +1,39 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<%#= render table: @user %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <table class= "form-box border my-3 p-2 py-3">
+        <%= form_with model: @user do |f| %>
+        <tr>
+          <th><%= f.label "アイコン"%></th>
+          <th><%= f.file_field :user_image, accept: 'image/*'  %></th>
+        </tr>
+
+        <tr>
+          <th><%= f.label "ニックネーム" %></th>
+          <th><%= f.text_field :name %></th>
+        </tr>
+
+        <tr>
+          <th><%= f.label "メールアドレス" %></th>
+          <th><%= f.email_field :email %></th>
+        </tr>
+        
+        <tr>
+          <th></th>
+          <th class="text-right"><%= f.submit "更新する", class: "btn btn-success" %></th>
+        </tr>
+
+        <% end %>
+      </table>
+    </div>
+    
+    <div class="col-md-2 border my-3">
+      <h4>今週</h4>
+      グラフ
+
+      <h4>先月</h4>
+      グラフ
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+.intake-breakfast{
+  background-color: #FFFFAA;
+}
+
+.intake-lunch{
+  background-color: #FF9933;
+}
+
+.intake-dinner{
+  background-color: #0000FF;
+  color: white;
+}
+
+.intake-snack{
+  background-color: #FFBBFF
+}
+
+footer{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  /*margin-bottom: -200px;*/
+}
+
+body{
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+}
+
+.user-icon{
+  border-radius: 50%;
+  width: 30px;  /* 縦横を同じ値にする */
+  height: 30px;  /* 縦横を同じ値にする */
+  object-fit: cover;
+  border: 1px solid #EEEEEE;
+}
+
+.nav-user-icon{
+  border-radius: 50%;
+  width: 30px;  /* 縦横を同じ値にする */
+  height: 30px;  /* 縦横を同じ値にする */
+  object-fit: cover;
+}
+.image-fluid{
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+

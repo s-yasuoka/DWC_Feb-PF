@@ -5,23 +5,110 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-User.create!(
-  name: "a",
-  point: "10",
-  rank_status: "3",
-  is_paid: "false",
-  email: "a@a",
+Admin.create!(
+  name: "k",
+  email: "a@aa",
   password: "000000"
+  )
+User.create!(
+  [
+    {
+      name: "a",
+      point: "10",
+      rank_status: "4",
+      is_paid: "false",
+      email: "a@a",
+      password: "000000"
+    },
+    {
+      name: "b",
+      point: "1",
+      rank_status: "1",
+      is_paid: "false",
+      email: "b@b",
+      password: "000000"
+    }
+  ]
 )
 
 Nutrient.create!(
-  name: "カルシウム",
-  nutritional_value: "5"
+    [
+      {
+        id: 1,
+        name: "タンパク質",
+        nutritional_value: "13"
+      },
+      {
+        id: 2,
+        name: "ビタミン",
+        nutritional_value: "1"
+      },
+      {
+        id: 3,
+        name: "ミネラル",
+        nutritional_value: "1"
+      },
+      {
+        id: 4,
+        name: "炭水化物",
+        nutritional_value: "50"
+      },
+      {
+        id: 5,
+        name: "脂質",
+        nutritional_value: "20"
+      }
+    ]
   )
 
 Ingredient.create!(
-  name: "牛乳"
+    [
+      {
+        name: "牛乳"
+      },
+      # {
+      #   name: "にんじん"
+      # },
+      # {
+      #   name: "じゃがいも"
+      # },
+      {
+        name: "魚"
+      },
+      {
+        name: "豆製品"
+      },
+      {
+        name: "卵"
+      },
+      {
+        name: "肉"
+      },
+      {
+        name: "米"
+      },
+      {
+        name: "パン"
+      },
+      {
+        name: "麺類"
+      },
+      {
+        name: "野菜"
+      },
+      {
+        name: "きのこ"
+      },
+      {
+        name: "ヨーグルト"
+      },
+      {
+        name: "チーズ"
+      },
+      {
+        name: "果物"
+      }
+    ]
   )
 
 IngredientNutrient.create!(
@@ -29,9 +116,6 @@ IngredientNutrient.create!(
   ingredient_id: "1"
   )
 
-Menu.create!(
-  name: "シチュー"
-  )
 
 MenuIngredient.create!(
   menu_id: "1",
@@ -40,7 +124,7 @@ MenuIngredient.create!(
 
 Intake.create!(
   user_id: "1",
-  menu_id: "1",
-  status: "1",
+  menu_name: "シチュー",
+  status: "breakfast",
   start_time: "2022-04-05"
   )

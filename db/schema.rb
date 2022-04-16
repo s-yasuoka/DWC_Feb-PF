@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_06_023718) do
+ActiveRecord::Schema.define(version: 2022_04_13_233148) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +40,19 @@ ActiveRecord::Schema.define(version: 2022_04_06_023718) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "admins", force: :cascade do |t|
+    t.string "name"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
   create_table "ingredient_nutrients", force: :cascade do |t|
     t.integer "nutrient_id"
     t.integer "ingredient_id"
@@ -55,12 +68,22 @@ ActiveRecord::Schema.define(version: 2022_04_06_023718) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "intake_ingredients", force: :cascade do |t|
+    t.integer "intake_id"
+    t.integer "ingredient_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id"], name: "index_intake_ingredients_on_ingredient_id"
+    t.index ["intake_id"], name: "index_intake_ingredients_on_intake_id"
+  end
+
   create_table "intakes", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "menu_id", null: false
+    t.string "menu_name", null: false
     t.integer "status", null: false
     t.date "start_time", null: false
     t.text "memo"
+    t.integer "point", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -80,6 +103,13 @@ ActiveRecord::Schema.define(version: 2022_04_06_023718) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "nutrients", force: :cascade do |t|
     t.string "name", null: false
     t.integer "nutritional_value", null: false
@@ -89,7 +119,7 @@ ActiveRecord::Schema.define(version: 2022_04_06_023718) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "point", default: 0, null: false
+    t.integer "point", default: 1, null: false
     t.integer "rank_status", default: 0, null: false
     t.boolean "is_paid", default: false, null: false
     t.string "email", default: "", null: false
