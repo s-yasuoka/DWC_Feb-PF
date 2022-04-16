@@ -11,7 +11,7 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "stylesheets/application"
-import 'stylesheets/mystyle.css'
+import 'stylesheets/mystyle.scss'
 require("jquery")
 import"select2";
 // import 'select2/dist/css/select2.css';
