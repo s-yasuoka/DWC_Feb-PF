@@ -10,11 +10,11 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "stylesheets/application"
+import "stylesheets/application.scss"
 import 'stylesheets/mystyle.scss'
 require("jquery")
-import"select2";
-// import 'select2/dist/css/select2.css';
+import "select2";
+// import 'select2/dist/css/select2.scss';
 
 Rails.start()
 Turbolinks.start()
