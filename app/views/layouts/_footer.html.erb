@@ -1,11 +1,11 @@
 <% if admin_signed_in? %>
   <footer class="fixed-bottom bg-primary text-right mb-auto">
-   <%= link_to "管理者", new_admin_session_path %>
+   <%= link_to "管理者", new_admin_session_path, class: "text-dark" %>
    <p class="text-light">PF_s-yasuoka</p>
   </footer>
 <% else %>
   <footer class="fixed-bottom bg-dark text-right mb-auto">
-  <%= link_to "管理者", new_admin_session_path %>
+  <%= link_to "管理者", new_admin_session_path, class: "text-dark" %>
    <p class="text-light">PF_s-yasuoka</p>
   </footer>
 <% end %>
