@@ -3,12 +3,6 @@
       <div class="col-md-9 border m-2 p-2">
         <strong class="m-3">👑ランキング👑</strong>
         <table class="rank border col-md-7 mt-4">
-          <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
           <% @user_rank.each.with_index(1) do |user, i| %>
             <tr class="rank-list d-flex flex-row p-2 m-2">
               <td><%= i %> 位 :　</td>
@@ -53,9 +47,10 @@
       <div class="col-md-2 border m-2 p-2">
         <h4>今週</h4>
         グラフ
-
+        <%= image_tag "graph.jpg", class: "image-fluid" %>
         <h4>先月</h4>
         グラフ
+        <%= image_tag "graph.jpg", class: "image-fluid" %>
       </div>
 
   </div>

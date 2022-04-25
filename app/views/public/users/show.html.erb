@@ -11,10 +11,13 @@
 
     <div class="col-md-2 border my-3">
       <h4>今週</h4>
-      グラフ
-
+      グラフ<br>
+      (coming soon)
+       <%= image_tag "graph.jpg", class: "image-fluid" %>
       <h4>先月</h4>
-      グラフ
+      グラフ<br>
+      (coming soon)
+       <%= image_tag "graph.jpg", class: "image-fluid" %>
     </div>
 
     <div class="col-md-10">
@@ -60,9 +63,12 @@
               </div>
           <% end %>
         <% end %>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          新しく記録する
-        </button>
+
+        <div class="col-md-12 text-right">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            新しく記録する
+          </button>
+        </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
