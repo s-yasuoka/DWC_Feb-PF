@@ -14,7 +14,7 @@ class Public::UsersController < ApplicationController
   end
 
   def rank
-    @user_rank = User.all.order(rank_point: :desc)
+    @user_rank = User.all.order(point: :desc)
 
     @ranking = 1
     @user_rank.find_each do |user|
