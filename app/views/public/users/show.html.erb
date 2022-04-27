@@ -24,8 +24,7 @@
       <div class="calendar border my-3 p-2 py-3">
         <%= month_calendar events: @intakes do |date, intakes| %>
           <%= date.day %><br>
-
-          <% unless intakes == nil %>
+          <% if intakes.any? %>
               <div class="intake-breakfast d-flex flex-row">
                 <p class="m-1">朝:</p>
                 <% intakes.each do |intake| %>

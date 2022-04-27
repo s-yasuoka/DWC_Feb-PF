@@ -5,7 +5,7 @@ class Intake < ApplicationRecord
   has_many :intake_ingredients, dependent: :destroy
   has_many :ingredients, through: :intake_ingredients
 
-  has_many_attached :image
+  has_one_attached :image
 
   validates :menu_name, presence: true, length: { minimum: 2 }
   validates :status, presence: true

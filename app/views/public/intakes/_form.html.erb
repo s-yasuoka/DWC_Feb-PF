@@ -8,7 +8,7 @@
 
       <tr>
         <th><%= f.label "写真"%></th>
-        <th><%= f.file_field :image, accept: 'image/*'  %></th>
+        <th><%= f.file_field :image, accept: 'image/*', multiple: true  %></th>
       </tr>
 
       <tr>
@@ -48,7 +48,11 @@
   <!--後で修正-->
   <script>
   $(function () {
-      $('#intake_name').select2();
+      $('#intake_name').select2({
+        dropdownAutoWidth : true,
+        width: 'auto'
+      });
   });
+
   </script>
 
