@@ -5,12 +5,17 @@ class Public::UsersController < ApplicationController
 
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @intakes = @user.intakes
     @intake_new = Intake.new
     @intake_ingredients =Ingredient.all
     @ingredient_list = Ingredient.all
     @notifications = Notification.all
+    if @user.id == current_user.id
+      render "show"
+    else
+      redirect_to user_path(current_user.id),alert: "あなたのページではありません!!"
+    end
   end
 
   def rank
@@ -26,7 +31,12 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
+    if @user.id == current_user.id
+      render "edit"
+    else
+      redirect_to user_path(current_user.id),alert: "あなたのページではありません!!"
+    end
   end
 
   def update

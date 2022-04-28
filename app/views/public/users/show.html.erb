@@ -46,7 +46,7 @@
               <div class="intake-dinner d-flex flex-row">
                 <p class="m-1">夜:</p>
                 <% intakes.each do |intake| %>
-                  <% if intake.status == "diner" %>
+                  <% if intake.status == "dinner" %>
                     <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
                   <% end %>
                 <% end %>
@@ -122,7 +122,7 @@
             <td></td>
             <td>
               <% if @user.name != "guestuser" %>
-                <%= link_to "編集する", edit_user_path(current_user.id) %>
+                <%= link_to "編集する", edit_user_path(current_user.id), 'data-turbolinks': false %>
               <% end %>
             </td>
           </tr>
