@@ -47,7 +47,7 @@
                 <p class="m-1">夜:</p>
                 <% intakes.each do |intake| %>
                   <% if intake.status == "dinner" %>
-                    <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-dark m-1" %>
+                    <%= link_to intake.menu_name, edit_intake_path(intake), class: "text-light m-1" %>
                   <% end %>
                 <% end %>
               </div>
