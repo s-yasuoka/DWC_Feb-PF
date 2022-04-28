@@ -24,9 +24,6 @@
 - 食事管理の記録を取る時
 - 栄養バランスに不安を感じた時
 
-## 設計書
-<...>
-
 ## 実装機能リスト
 https://docs.google.com/spreadsheets/d/15ohx9hPM-3DEI1fkDYvpZMOn0PrhSRLG0_c-BTtXnLM/edit?usp=sharing
 
