@@ -22,8 +22,8 @@ class Public::IntakesController < ApplicationController
       #if @intake_new.ingredient.any?
       if ingredient_list.nil?
         ingredient_list = Array.new
-        @intake_new.save_ingredient(ingredient_list) #食材
       end
+      @intake_new.save_ingredient(ingredient_list) #食材
 
       current_user.point +=  @intake_new.point.to_i #ポイント
       current_user.rank_status = current_user.point.to_i
@@ -46,8 +46,9 @@ class Public::IntakesController < ApplicationController
       #byebug
       if ingredient_list.nil?
         ingredient_list = Array.new
-        @intake.save_ingredient(ingredient_list)
       end
+      @intake.save_ingredient(ingredient_list)
+
       flash[:notice] = "更新しました。"
       redirect_to user_path(current_user)
     else
