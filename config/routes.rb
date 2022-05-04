@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get "users/rank" => "users#rank"
     resources :users, only: [:show, :edit, :update]
     resources :intakes, only: [:new, :create, :update, :edit, :destroy]
+    post "intakes/image" => 'intakes#image_data'
   end
 
   namespace :admin do

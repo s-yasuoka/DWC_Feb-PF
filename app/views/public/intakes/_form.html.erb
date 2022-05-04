@@ -8,12 +8,12 @@
 
       <tr>
         <th><%= f.label "写真"%></th>
-        <th><%= f.file_field :image, accept: 'image/*', multiple: true  %></th>
+        <th><%= f.file_field :image, accept: 'image/*', id: "meal_image" %></th>
       </tr>
 
       <tr>
         <th><%= f.label "メニュー" %></th>
-        <th><%= f.text_field :menu_name %></th>
+        <th><%= f.text_field :menu_name, id:"menu_name" %></th>
       <tr>
 
       <tr>
@@ -51,6 +51,28 @@
       $('#intake_name').select2({
         dropdownAutoWidth : true,
         width: 'auto'
+      });
+      $('#meal_image').change(function() {
+        const fileReader = new FileReader();
+        const file = ($(this).prop('files')[0]);
+        if(!file) {
+          return;
+        }
+        fileReader.readAsDataURL(file);
+        fileReader.onload = function(e) {
+          $.ajax({
+            url: '/intakes/image',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+              image: fileReader.result.split(',')[1]
+            }
+          }).done(function(data) {
+            $("#menu_name").val(data.image.join(','));
+          }).fail(function(XMLHttpRequest, status, e) {
+            console.error(e);
+          })
+        }
       });
   });
 

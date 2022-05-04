@@ -19,7 +19,15 @@ class Public::IntakesController < ApplicationController
     @intake_new.user_id = current_user.id
     ingredient_list = params[:intake][:name]
     if @intake_new.save
-      #if @intake_new.ingredient.any?
+      # tags = Vision.get_image_data(@intake_new.image) #vision API
+      # tags.each do |tag|
+      #   intake.memos.create(name: tag)
+      # end
+      tags = Vision.get_image_data(@intake_new.image) #vision API
+      tags.each do |tag|
+        intake.ingredients.create(name: tag)
+      end
+
       if ingredient_list.nil?
         ingredient_list = Array.new
       end
@@ -35,6 +43,16 @@ class Public::IntakesController < ApplicationController
       flash[:alert] = "記録できませんでした。"
       redirect_to user_path(current_user)
     end
+
+  end
+
+  def image_data
+    image = Vision.get_async_image_data(params[:image])
+    render json: {
+      image: image
+    }
+    # vision api を呼び出す
+    # vision apiの結果を返却する
   end
 
   def update
@@ -71,7 +89,7 @@ class Public::IntakesController < ApplicationController
 
   private
   def intake_parameter
-    params.require(:intake).permit(:imgae, :menu_name, :status, :start_time, :memo)
+    params.require(:intake).permit(:image, :menu_name, :status, :start_time, :memo)
   end
 
 end
