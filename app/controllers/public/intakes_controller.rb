@@ -19,14 +19,11 @@ class Public::IntakesController < ApplicationController
     @intake_new.user_id = current_user.id
     ingredient_list = params[:intake][:name]
     if @intake_new.save
+
       # tags = Vision.get_image_data(@intake_new.image) #vision API
       # tags.each do |tag|
-      #   intake.memos.create(name: tag)
+      #   intake.ingredients.create(name: tag)
       # end
-      tags = Vision.get_image_data(@intake_new.image) #vision API
-      tags.each do |tag|
-        intake.ingredients.create(name: tag)
-      end
 
       if ingredient_list.nil?
         ingredient_list = Array.new
